@@ -19,7 +19,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     // 회원가입
-    public DefalutResDTO inserUser(UserReqDTO userReqDTO) {
+    public String insertUser(UserReqDTO userReqDTO) {
         User user = new User();
 
         // PASSWORD를 USER에 저장
@@ -30,6 +30,6 @@ public class UserService {
         // DB에 저장
         userRepository.save(user);
 
-        return DefalutResDTO.of("SUCCESS", "회원가입 성공", user);
+        return "회원가입 성공";
     }
 }

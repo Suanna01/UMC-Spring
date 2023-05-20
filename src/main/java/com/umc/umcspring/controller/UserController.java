@@ -16,9 +16,10 @@ public class UserController {
     UserService userService;
 
     // 회원가입
-    @PostMapping("/signup")
+    @PostMapping(value = "/signup")
     public String saveOrder(@RequestBody UserReqDTO userReqDTO) {
-        userService.inserUser(userReqDTO);
-        return "회원가입 성공";
+        System.out.println(userReqDTO.getEmail());
+        userService.insertUser(userReqDTO);
+        return "signup";
     }
 }
