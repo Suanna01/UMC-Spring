@@ -2,6 +2,7 @@ package com.umc.umcspring.controller;
 
 import com.umc.umcspring.ResponseMessage;
 import com.umc.umcspring.StatusCode;
+import com.umc.umcspring.domain.User;
 import com.umc.umcspring.dto.DefaultRes;
 import com.umc.umcspring.dto.UserReqDTO;
 import com.umc.umcspring.service.UserService;
@@ -10,10 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,5 +28,11 @@ public class UserController {
         headers.set("Users","Signup");    //header name, header value
         userService.insertUser(userReqDTO);
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.CREATE_USER, userReqDTO), HttpStatus.OK);
+    }
+
+    // 회원 정보 조회
+    @GetMapping("/list")
+    public ResponseEntity<User> findAll() {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_USER, userService.selectAllUser()), HttpStatus.OK);
     }
 }
