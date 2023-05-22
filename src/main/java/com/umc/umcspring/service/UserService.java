@@ -1,12 +1,10 @@
 package com.umc.umcspring.service;
 
 import com.umc.umcspring.domain.User;
-import com.umc.umcspring.dto.DefalutResDTO;
 import com.umc.umcspring.dto.UserReqDTO;
 import com.umc.umcspring.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
