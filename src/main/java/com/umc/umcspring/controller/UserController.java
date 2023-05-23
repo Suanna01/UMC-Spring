@@ -4,15 +4,14 @@ import com.umc.umcspring.ResponseMessage;
 import com.umc.umcspring.StatusCode;
 import com.umc.umcspring.domain.User;
 import com.umc.umcspring.dto.DefaultRes;
-import com.umc.umcspring.dto.UserPasswordReqDto;
+import com.umc.umcspring.dto.UserPasswordReqDTO;
 import com.umc.umcspring.dto.UserReqDTO;
+import com.umc.umcspring.dto.UserWithdrawReqDTO;
 import com.umc.umcspring.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -37,7 +36,13 @@ public class UserController {
 
     // 회원 정보 수정
     @PatchMapping("/fix")
-    public ResponseEntity<UserReqDTO> changePassword(@RequestBody UserPasswordReqDto userReqDTO) {
-        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_USER, userService.changeUser(userReqDTO)), HttpStatus.OK);
+    public ResponseEntity<UserReqDTO> changePassword(@RequestBody UserPasswordReqDTO userReqDTO) {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_USER, userService.changeUser(userReqDTO)), HttpStatus.OK);
+    }
+
+    // 회원 탈퇴
+    @DeleteMapping("/withdraw")
+    public ResponseEntity<UserWithdrawReqDTO> withdrawUser(@RequestBody UserWithdrawReqDTO userWithdrawReqDTO) {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.DELETE_USER, userService.deleteUser(userWithdrawReqDTO)), HttpStatus.OK);
     }
 }
