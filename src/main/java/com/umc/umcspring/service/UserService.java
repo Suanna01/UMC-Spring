@@ -1,6 +1,7 @@
 package com.umc.umcspring.service;
 
 import com.umc.umcspring.domain.User;
+import com.umc.umcspring.dto.UserPasswordReqDto;
 import com.umc.umcspring.dto.UserReqDTO;
 import com.umc.umcspring.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -36,5 +37,16 @@ public class UserService {
     // 회원조회
     public List<User> selectAllUser() {
         return userRepository.findAll();
+    }
+
+    // 회원정보 변경
+    public String changeUser(UserPasswordReqDto userPasswordReqDto) {
+        User user = userRepository.findByEmail(userPasswordReqDto.getEmail());
+
+        user.setPassword(passwordEncoder.encode(userPasswordReqDto.getNewPassword()));
+        
+        userRepository.save(user);
+
+        return "회원정보 변경";
     }
 }

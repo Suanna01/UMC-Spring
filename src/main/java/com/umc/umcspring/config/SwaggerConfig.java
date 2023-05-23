@@ -19,7 +19,7 @@ public class SwaggerConfig {
         return new ApiInfoBuilder()
                 .title("UMC-Spring")
                 .version("0.0.1")
-                .description("API")
+                .description("UMC Spring JPA API 실습")
                 .build();
     }
     @Bean
