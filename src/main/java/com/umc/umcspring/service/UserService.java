@@ -57,4 +57,10 @@ public class UserService {
         userRepository.delete(user);
         return "회원탈퇴";
     }
+
+    // 회원 프로필 조회
+    public String getUserProfile(String email) {
+        userRepository.findByEmail(email);
+        return "회원프로필 조회";
+    }
 }

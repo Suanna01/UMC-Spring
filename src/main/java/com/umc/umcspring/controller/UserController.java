@@ -35,7 +35,7 @@ public class UserController {
     }
 
     // 회원 정보 수정
-    @PatchMapping("/fix")
+    @PatchMapping("/profile-modify")
     public ResponseEntity<UserReqDTO> changePassword(@RequestBody UserPasswordReqDTO userReqDTO) {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_USER, userService.changeUser(userReqDTO)), HttpStatus.OK);
     }
@@ -45,4 +45,11 @@ public class UserController {
     public ResponseEntity<UserWithdrawReqDTO> withdrawUser(@RequestBody UserWithdrawReqDTO userWithdrawReqDTO) {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.DELETE_USER, userService.deleteUser(userWithdrawReqDTO)), HttpStatus.OK);
     }
+
+    // 프로필 조회
+    @GetMapping("/profile/{email}")
+    public ResponseEntity<User> profile(@PathVariable ("email") String email) {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_USER_PROFILE, userService.getUserProfile(email)), HttpStatus.OK);
+    }
+
 }
