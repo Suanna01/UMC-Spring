@@ -26,4 +26,8 @@ public class ProductService {
         return "상품 등록 성공";
     }
 
+    // 전체 상품 조회
+    public List<Product> selectAllProd() {
+        return productRepository.findAll();
+    }
 }
