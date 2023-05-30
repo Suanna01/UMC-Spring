@@ -25,4 +25,10 @@ public class ProductController {
         productService.insertProd(prodReqDTO);
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.CREATE_PROD, prodReqDTO), HttpStatus.OK);
     }
+
+    // 전체 상품 조회
+    @GetMapping("/list")
+    public ResponseEntity<Product> findAll() {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_PROD, productService.selectAllProd()), HttpStatus.OK);
+    }
 }
