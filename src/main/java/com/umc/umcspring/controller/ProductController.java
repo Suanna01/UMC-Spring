@@ -31,4 +31,11 @@ public class ProductController {
     public ResponseEntity<Product> findAll() {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_PROD, productService.selectAllProd()), HttpStatus.OK);
     }
+
+    // 상품 수정
+    @PutMapping("/prod-modify/{id}")
+    public ResponseEntity<Product> prodModify(@PathVariable Long id, @RequestBody ProdReqDTO prodReqDTO) {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.PUT_PROD, productService.updateProd(id, prodReqDTO)), HttpStatus.OK);
+    }
+
 }
