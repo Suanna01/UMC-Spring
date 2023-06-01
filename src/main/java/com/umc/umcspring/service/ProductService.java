@@ -7,6 +7,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @RequiredArgsConstructor
 @Service
@@ -30,4 +31,18 @@ public class ProductService {
     public List<Product> selectAllProd() {
         return productRepository.findAll();
     }
+
+    // 상품 수정
+    public String updateProd(Long id, ProdReqDTO prodReqDTO) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        Product product = productOptional.get();
+
+        product.setName(prodReqDTO.getName());
+        product.setPrice(prodReqDTO.getPrice());
+
+        productRepository.save(product);
+
+        return "상품 수정 성공";
+    }
+
 }
