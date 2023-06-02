@@ -45,4 +45,18 @@ public class ProductService {
         return "상품 수정 성공";
     }
 
+    // 상품 가격 수정 (할인 적용)
+    public String updateProd(Long id, int rate) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        Product product = productOptional.get();
+
+        // rate 만큼 할인하기
+        product.setPrice(String.valueOf((int)(Integer.parseInt(product.getPrice()) * (1 - (double)rate / 100))));
+
+        productRepository.save(product);
+
+        return "상품 가격 할인 성공";
+    }
+
+
 }
