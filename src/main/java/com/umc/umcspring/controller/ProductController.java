@@ -38,4 +38,10 @@ public class ProductController {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.PUT_PROD, productService.updateProd(id, prodReqDTO)), HttpStatus.OK);
     }
 
+    // 상품 가격 수정 (할인 적용)
+    @PatchMapping("/prod-discount/{id}/{rate}")
+    public ResponseEntity<Product> prodNameModify(@PathVariable int rate, @PathVariable Long id) {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.PATCH_PROD_PRICE, productService.updateProd(id, rate)), HttpStatus.OK);
+    }
+
 }
