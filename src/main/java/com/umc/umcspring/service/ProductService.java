@@ -67,4 +67,11 @@ public class ProductService {
 
         return "상품 삭제 성공";
     }
+
+    // 특정 상품 조회
+    public Product selectProdById(Long id) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        Product product = productOptional.get();
+        return product;
+    }
 }
