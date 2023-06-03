@@ -49,4 +49,10 @@ public class ProductController {
     public ResponseEntity<Product> prodRemove(@PathVariable Long id) {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.DELETE_PROD, productService.deleteProd(id)), HttpStatus.OK);
     }
+
+    // 특정 상품 조회
+    @GetMapping("/item")
+    public ResponseEntity<Product> getProd(@RequestParam Long id) {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_PROD_BY_ID, productService.selectProdById(id)), HttpStatus.OK);
+    }
 }
