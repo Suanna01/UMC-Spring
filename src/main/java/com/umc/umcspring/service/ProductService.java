@@ -58,5 +58,13 @@ public class ProductService {
         return "상품 가격 할인 성공";
     }
 
+    // 상품 삭제
+    public String deleteProd(Long id) {
+        Optional<Product> productOptional = productRepository.findById(id);
+        Product product = productOptional.get();
 
+        productRepository.delete(product);
+
+        return "상품 삭제 성공";
+    }
 }
