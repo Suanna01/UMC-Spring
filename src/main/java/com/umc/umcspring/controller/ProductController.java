@@ -44,4 +44,9 @@ public class ProductController {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.PATCH_PROD_PRICE, productService.updateProd(id, rate)), HttpStatus.OK);
     }
 
+    // 상품 삭제
+    @DeleteMapping("/remove/{id}")
+    public ResponseEntity<Product> prodRemove(@PathVariable Long id) {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.DELETE_PROD, productService.deleteProd(id)), HttpStatus.OK);
+    }
 }
