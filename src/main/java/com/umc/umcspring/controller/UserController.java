@@ -24,6 +24,9 @@ public class UserController {
     // 회원가입
     @PostMapping("/signup")
     public ResponseEntity<UserReqDTO> saveOrder(@RequestBody UserReqDTO userReqDTO) {
+        if (userReqDTO.getEmail().equals("") || userReqDTO.getName().equals("")){
+            return new ResponseEntity(DefaultRes.res(StatusCode.BAD_REQUEST, ResponseMessage.CREATE_USER_FAIL, null), HttpStatus.BAD_REQUEST);
+        }
         userService.insertUser(userReqDTO);
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.CREATE_USER, userReqDTO), HttpStatus.OK);
     }
