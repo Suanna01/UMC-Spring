@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 @NoArgsConstructor
 @Getter
@@ -17,6 +18,7 @@ public class User {
     @Column(name = "user_id")
     private Long userId;
 
+    @Email
     @Column(name = "email")
     private String email;
 
