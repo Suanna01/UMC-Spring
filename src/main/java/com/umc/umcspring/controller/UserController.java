@@ -40,6 +40,9 @@ public class UserController {
     // 회원 정보 수정
     @PatchMapping("/profile-modify")
     public ResponseEntity<UserReqDTO> changePassword(@RequestBody UserPasswordReqDTO userReqDTO) {
+        if (userReqDTO.getPrePassword().equals("") || userReqDTO.getNewPassword().equals("")) {
+            return new ResponseEntity(DefaultRes.res(StatusCode.BAD_REQUEST, ResponseMessage.UPDATE_USER_FAIL, null), HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_USER, userService.changeUser(userReqDTO)), HttpStatus.OK);
     }
 
@@ -52,6 +55,9 @@ public class UserController {
     // 프로필 조회
     @GetMapping("/profile/{email}")
     public ResponseEntity<User> profile(@PathVariable ("email") String email) {
+        if (email.equals("")){
+            return new ResponseEntity(DefaultRes.res(StatusCode.BAD_REQUEST, ResponseMessage.READ_USER_PROFILE_FAIL, null), HttpStatus.BAD_REQUEST);
+        }
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_USER_PROFILE, userService.getUserProfile(email)), HttpStatus.OK);
     }
 
