@@ -16,4 +16,7 @@ public class ResponseMessage {
     public static final String DELETE_PROD = "상품 삭제 성공";
     public static final String READ_PROD_BY_ID = "특정 상품 조회 성공";
     public static final String READ_USER_PROFILE_FAIL = "특정 상품 조회 실패";
+
+
+    public static final String CREATE_BOARD = "글 등록 성공";
 }
