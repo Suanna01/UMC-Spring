@@ -16,5 +16,9 @@
 - 상품 정보 변경하기
 - 상품 삭제하기
 
+**3️⃣ 소셜 로그인**
+
+**4️⃣ 인앱 결제 기능 **
+
 
 ![Untitled (20)](https://github.com/Suanna01/UMC-Spring/assets/86403488/7aedcb7d-b17d-4f4e-9a9e-8f7133cf97ac)
