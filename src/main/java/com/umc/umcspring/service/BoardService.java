@@ -6,6 +6,8 @@ import com.umc.umcspring.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @RequiredArgsConstructor
 @Service
 public class BoardService {
@@ -22,5 +24,18 @@ public class BoardService {
         boardRepository.save(board);
 
         return "글 등록 성공";
+    }
+
+    // 글 수정
+    public String updateBoard(BoardReqDTO boardReqDTO, String boardId) {
+        Optional<Board> boardOptional  = boardRepository.findById(Long.valueOf(boardId));
+        Board board = boardOptional.get();
+
+        board.setTitle(boardReqDTO.getTitle());
+        board.setContent(boardReqDTO.getContent());
+
+        boardRepository.save(board);
+
+        return "글 수정 성공";
     }
 }
