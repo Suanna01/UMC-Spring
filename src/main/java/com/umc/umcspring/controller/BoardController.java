@@ -9,10 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -29,4 +26,10 @@ public class BoardController {
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.CREATE_BOARD, boardReqDTO), HttpStatus.OK);
     }
 
+    // 글 수정
+    @PatchMapping("/edit/{boardId}")
+    public ResponseEntity<BoardReqDTO> editBoard(@RequestBody BoardReqDTO boardReqDTO, @PathVariable ("boardId") String boardId) {
+        boardService.updateBoard(boardReqDTO, boardId);
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_BOARD, boardReqDTO), HttpStatus.OK);
+    }
 }
