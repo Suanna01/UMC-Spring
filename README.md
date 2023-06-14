@@ -18,7 +18,7 @@
 
 **3️⃣ 소셜 로그인**
 
-**4️⃣ 인앱 결제 기능 **
+**4️⃣ 인앱 결제 기능**
 
 
 ![Untitled (20)](https://github.com/Suanna01/UMC-Spring/assets/86403488/7aedcb7d-b17d-4f4e-9a9e-8f7133cf97ac)
