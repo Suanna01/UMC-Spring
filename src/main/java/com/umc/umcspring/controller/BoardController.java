@@ -2,6 +2,7 @@ package com.umc.umcspring.controller;
 
 import com.umc.umcspring.ResponseMessage;
 import com.umc.umcspring.StatusCode;
+import com.umc.umcspring.domain.Board;
 import com.umc.umcspring.dto.BoardReqDTO;
 import com.umc.umcspring.dto.DefaultRes;
 import com.umc.umcspring.service.BoardService;
@@ -31,5 +32,11 @@ public class BoardController {
     public ResponseEntity<BoardReqDTO> editBoard(@RequestBody BoardReqDTO boardReqDTO, @PathVariable ("boardId") String boardId) {
         boardService.updateBoard(boardReqDTO, boardId);
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_BOARD, boardReqDTO), HttpStatus.OK);
+    }
+
+    // 전체 글 조회
+    @GetMapping("")
+    public ResponseEntity<Board> getBoard(){
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_BOARD, boardService.findAllBoard()), HttpStatus.OK);
     }
 }
