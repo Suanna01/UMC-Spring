@@ -20,4 +20,5 @@ public class ResponseMessage {
 
     public static final String CREATE_BOARD = "글 등록 성공";
     public static final String UPDATE_BOARD = "글 수정 성공";
+    public static final String READ_BOARD = "전체 글 조회 성공";
 }

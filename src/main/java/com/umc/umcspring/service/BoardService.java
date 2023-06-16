@@ -6,6 +6,7 @@ import com.umc.umcspring.repository.BoardRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @RequiredArgsConstructor
@@ -37,5 +38,10 @@ public class BoardService {
         boardRepository.save(board);
 
         return "글 수정 성공";
+    }
+
+    // 전체 글 조회
+    public List<Board> findAllBoard() {
+        return boardRepository.findAll();
     }
 }
