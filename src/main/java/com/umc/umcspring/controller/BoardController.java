@@ -6,6 +6,7 @@ import com.umc.umcspring.domain.Board;
 import com.umc.umcspring.dto.BoardReqDTO;
 import com.umc.umcspring.dto.DefaultRes;
 import com.umc.umcspring.service.BoardService;
+import io.swagger.models.Response;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,5 +39,11 @@ public class BoardController {
     @GetMapping("")
     public ResponseEntity<Board> getBoard(){
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.READ_BOARD, boardService.findAllBoard()), HttpStatus.OK);
+    }
+
+    // 글 삭제
+    @DeleteMapping("/delete/{boardId}")
+    public ResponseEntity<Board> deleteBoard(@PathVariable ("boardId") Long id) {
+        return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.DELETE_BOARD, boardService.deleteBoard(id)), HttpStatus.OK);
     }
 }
