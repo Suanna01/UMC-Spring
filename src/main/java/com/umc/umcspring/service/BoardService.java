@@ -44,4 +44,13 @@ public class BoardService {
     public List<Board> findAllBoard() {
         return boardRepository.findAll();
     }
+
+    // 글 삭제
+    public String deleteBoard(Long boardId) {
+        Optional<Board> boardOptional = boardRepository.findById(boardId);
+        Board board = boardOptional.get();
+
+        boardRepository.delete(board);
+        return "글 삭제 성공";
+    }
 }
