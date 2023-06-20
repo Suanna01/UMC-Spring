@@ -29,8 +29,8 @@ public class BoardController {
     }
 
     // 글 수정
-    @PatchMapping("/edit/{boardId}")
-    public ResponseEntity<BoardReqDTO> editBoard(@RequestBody BoardReqDTO boardReqDTO, @PathVariable ("boardId") String boardId) {
+    @PatchMapping("/edit")
+    public ResponseEntity<BoardReqDTO> editBoard(@RequestBody BoardReqDTO boardReqDTO, @RequestParam String boardId) {
         boardService.updateBoard(boardReqDTO, boardId);
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.UPDATE_BOARD, boardReqDTO), HttpStatus.OK);
     }
