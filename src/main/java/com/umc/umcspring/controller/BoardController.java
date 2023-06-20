@@ -24,6 +24,10 @@ public class BoardController {
     // 글 등록
     @PostMapping("/new")
     public ResponseEntity<BoardReqDTO> postBoard(@RequestBody BoardReqDTO boardReqDTO) {
+        if (boardReqDTO.getTitle().equals("") && boardReqDTO.getContent().equals("")){
+            return new ResponseEntity(DefaultRes.res(StatusCode.BAD_REQUEST, ResponseMessage.CREATE_BOARD_FAIL, null), HttpStatus.BAD_REQUEST);
+        }
+
         boardService.insertBoard(boardReqDTO);
         return new ResponseEntity(DefaultRes.res(StatusCode.OK, ResponseMessage.CREATE_BOARD, boardReqDTO), HttpStatus.OK);
     }

@@ -17,9 +17,9 @@ public class Board {
     @Column(name = "board_id")
     private Long id;
 
-    @Column(name = "title")
+    @Column(length = 100, name = "title")
     private String title;
 
-    @Column(name = "content")
+    @Column(length = 500, name = "content")
     private String content;
 }
